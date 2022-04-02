@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksController } from './tasks.controller';
 import { Task } from './tasks.entity';
-import { tasksRepository } from './tasks.repository';
+import { TasksRepository } from './tasks.repository';
 import { TasksService } from './tasks.service';
 
 @Module({
