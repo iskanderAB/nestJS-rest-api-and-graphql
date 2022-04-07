@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './tasks/tasks.entity';
 import { TasksModule } from './tasks/tasks.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from './auth/user.entity';
 
 @Module({
   imports: [
@@ -13,14 +15,15 @@ import { TasksModule } from './tasks/tasks.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: '5432',
+      port: 5432,
       username: 'postgres',
       password: 'iskander.ab',
       database: 'task-management',
       autoLoadEntities: true,
-      entities: [Task],
+      entities: [Task,User],
       synchronize: true
-    })
+    }),
+    AuthModule
   ],
 })
 export class AppModule {}
