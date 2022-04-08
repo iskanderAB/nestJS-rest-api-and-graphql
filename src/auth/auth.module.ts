@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRepository } from './users.repository';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { JWT_Strategy } from './jwt-strategy';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { JwtModule } from '@nestjs/jwt';
       }
     })
   ],
-  providers: [AuthService],
-  controllers: [AuthController]
+  providers: [AuthService,JWT_Strategy],
+  controllers: [AuthController],
+  exports: [JWT_Strategy,PassportModule]
 })
 export class AuthModule {}
